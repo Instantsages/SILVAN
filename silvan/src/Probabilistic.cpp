@@ -64,7 +64,7 @@ Probabilistic::Probabilistic( const std::string &filename, const bool directed, 
     if (verbose > 0) {
         print_data();
     }
-    output_file = output_file_;
+    output_file = "bc_result.txt";
     // mcrade
     mcrade = (int64_t *) calloc( get_nn()*mctrials, sizeof(int64_t) );
     partition_index = (int *) calloc( get_nn(), sizeof(int) );
@@ -1121,7 +1121,7 @@ void Probabilistic::run(uint32_t k, double delta, double err, uint32_t union_sam
       if(!absolute){
         for(uint32_t i=0; i < this->numresults_topk; i++){
           uint64_t node_id = this->top_k->get(i);
-          double approx_node = this->top_k->get_value(i)/(double)num_samples;
+          double approx_node = this->top_k->get_value(i);
           output_file_str << node_id << ","<< approx_node << "\n";
         }
       }
