@@ -147,7 +147,7 @@ int main(int argc, char *argv[]){
         return correct_parse!=2;
     }
 
-    Probabilistic G( graph_file, directed, verb , sampling_rate , alpha_given , empirical_peeling_param , m_hat_enabled , output_file);
+    Probabilistic G( graph_file, directed, verb , sampling_rate , alpha_given , empirical_peeling_param , m_hat_enabled , output_file, err);
     G.run((uint32_t) k, delta, err);
     std::cout << "run finished" << std::endl;
     return 0;

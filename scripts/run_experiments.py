@@ -10,7 +10,7 @@ graphs = graphs.set_index('graph_name').T.to_dict('list')
 print(graphs)
 #graphs = graphs["graph_name"].values
 
-num_runs = 10
+num_runs = 1
 db_path = "../datasets/"
 run_kadabra = 1
 
@@ -27,12 +27,13 @@ for run_id in range(num_runs):
             if directed == True:
                 directed_flag = " -t 1"
             # run the experiment
-            graph_name = graph_name.replace(".txt","_pre.txt")
-            cmd = "python3 run_kadabra.py -db "+db_path+graph_name+" -e "+str(epsilon)+directed_flag
-            if run_kadabra == 1:
-                print("run ",run_id," ",cmd)
-                os.system(cmd)
-                time.sleep(1)
+            # graph_name = graph_name.replace(".txt","_pre.txt")
+            # cmd = "python3 run_kadabra.py -db "+db_path+graph_name+" -e "+str(epsilon)+directed_flag
+            # if run_kadabra == 1:
+            #     print("run ",run_id," ",cmd)
+            #     os.system(cmd)
+            #     time.sleep(1)
+                
             cmd = "python3 run_silvan.py -db "+db_path+graph_name+" -e "+str(epsilon)+directed_flag
             print("run ",run_id," ",cmd)
             os.system(cmd)

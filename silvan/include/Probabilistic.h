@@ -27,7 +27,7 @@ class Status {
 class Probabilistic : public Graph
 {
     public:
-        Probabilistic( const std::string &filename, bool directed = false, const double verb = 60, const double sampling_rate_ = 2.3, bool alpha_given_ = false, const double empirical_peeling_param_ = 2.0 , const bool enable_m_hat_ = true, const std::string output_file_ = "" );
+        Probabilistic( const std::string &filename, bool directed = false, const double verb = 60, const double sampling_rate_ = 2.3, bool alpha_given_ = false, const double empirical_peeling_param_ = 2.0 , const bool enable_m_hat_ = true, const std::string output_file_ = "", const double err = 0);
         virtual ~Probabilistic();
         void run(const uint32_t k, const double delta, const double err = 0,
                  const uint32_t union_sample = 0,

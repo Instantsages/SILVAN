@@ -38,7 +38,7 @@ Status::~Status() {
 
 // Creates the graph for running the approximation algorithm.
 // For more information see the graph class.
-Probabilistic::Probabilistic( const std::string &filename, const bool directed, const double verb, const double sampling_rate_, const bool alpha_given_, const double empirical_peeling_param_ , const bool enable_m_hat_, const std::string output_file_ ): Graph( filename, directed ), verbose(verb) {
+Probabilistic::Probabilistic( const std::string &filename, const bool directed, const double verb, const double sampling_rate_, const bool alpha_given_, const double empirical_peeling_param_ , const bool enable_m_hat_, const std::string output_file_, const double err): Graph( filename, directed ), verbose(verb) {
     approx = (double *) calloc( get_nn(), sizeof(double) );
     approx_toadd = (double *) calloc( get_nn(), sizeof(double) );
     time_bfs = (double *) calloc( omp_get_max_threads(), sizeof(double) );
@@ -64,7 +64,7 @@ Probabilistic::Probabilistic( const std::string &filename, const bool directed, 
     if (verbose > 0) {
         print_data();
     }
-    output_file = "bc_result.txt";
+    output_file = filename.substr(12, 5) + "_" + to_string(err) + "_bc.txt";
     // mcrade
     mcrade = (int64_t *) calloc( get_nn()*mctrials, sizeof(int64_t) );
     partition_index = (int *) calloc( get_nn(), sizeof(int) );
